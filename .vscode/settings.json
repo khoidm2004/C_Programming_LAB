@@ -3,5 +3,7 @@
     "stdio.h": "c",
     "T1.C": "cpp",
     "T2.C": "cpp"
-  }
+  },
+  "workbench.commandPalette.experimental.suggestCommands": true,
+  "workbench.editor.wrapTabs": true
 }
