@@ -9,15 +9,12 @@ void printContent(char *content, char *fileName);
 int main()
 {
     char content[FILE_CONTENT_MAX] = "";
-    char *pContent = content;
-
     char fileName[INPUT_MAX];
-    char *pFileName = fileName;
 
-    printf("Program starting\nThis program can read a file.\n");
+    printf("Program starting.\nThis program can read a file.\n");
     readFile(content, fileName);
     printContent(content, fileName);
-    printf("Program ending\n");
+    printf("Program ending.\n");
     return 0;
 }
 
@@ -31,11 +28,24 @@ void readFile(char *content, char *fileName)
     fileName[strcspn(fileName, "\n")] = '\0';
 
     filehandling = fopen(fileName, "r");
+    if (filehandling == NULL)
+    {
+        fprintf(stderr, "Error: Could not open file %s\n", fileName);
+        return;
+    }
+
     content[0] = '\0';
     while (fgets(line, INPUT_MAX, filehandling))
     {
-        strcat(content, line);
-    };
+        size_t remaining_space = FILE_CONTENT_MAX - strlen(content) - 1;
+        if (remaining_space < strlen(line))
+        {
+            fprintf(stderr, "Warning: File content is too large to fit into buffer.\n");
+            break;
+        }
+        strncat(content, line, remaining_space);
+    }
+
     fclose(filehandling);
 }
 
@@ -44,5 +54,5 @@ void printContent(char *content, char *fileName)
     int db = 34;
     printf("#### START %c%s%c ####\n", db, fileName, db);
     printf("%s", content);
-    printf("\n#### END %c%s%c ####\n", db, fileName, db);
+    printf("#### END %c%s%c ####\n", db, fileName, db);
 }
