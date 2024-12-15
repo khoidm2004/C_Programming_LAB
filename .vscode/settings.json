@@ -2,8 +2,11 @@
   "files.associations": {
     "stdio.h": "c",
     "T1.C": "cpp",
-    "T2.C": "cpp"
+    "T2.C": "cpp",
+    "print.c": "cpp",
+    "string.h": "c"
   },
   "workbench.commandPalette.experimental.suggestCommands": true,
-  "workbench.editor.wrapTabs": true
+  "workbench.editor.wrapTabs": true,
+  "C_Cpp.errorSquiggles": "disabled"
 }
