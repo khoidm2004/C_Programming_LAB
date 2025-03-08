@@ -4,7 +4,7 @@
 
 ## Course: AT00CK34-3003 Embedded Systems
 
-## Author
+## Author 👷
 - [Khoi Do](https://github.com/khoidm2004)
 
 ## Tool
